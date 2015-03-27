@@ -36,9 +36,6 @@ class ContactEval(http.Controller):
 
 		categ_name = categ_obj.browse(cr, uid,[int(group_id)], context=context).display_name
 
-		print "''''''''''''''''''''WORKS''''''''''''''''''''''''"
-		print group_id
-		print categ_name
 		#prepares fields of new lead
 		post = {
 			'description' : "",
