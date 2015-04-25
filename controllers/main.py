@@ -29,33 +29,38 @@ from openerp.addons.web.http import request
 
 class ContactEval(http.Controller):
 
-	@http.route(['/contact_eval/confirm'], type='json', auth="public", website=True)
-	def contact_eval_confirm(self,lead_email = None, lead_name= None, group_id= None, **post):
-		cr, uid, context = request.cr, SUPERUSER_ID, request.context
-		categ_obj = request.registry.get("crm.case.categ")
+    @http.route(['/contact_eval/confirm'], type='json', auth="public", website=True)
+    def contact_eval_confirm(self, lead_email=None, lead_name=None, lead_company=None, lead_tel=None, group_id=None, **post):
+        cr, uid, context = request.cr, SUPERUSER_ID, request.context
+        categ_obj = request.registry.get("crm.case.categ")
 
-		categ_name = categ_obj.browse(cr, uid,[int(group_id)], context=context).display_name
+        categ_name = categ_obj.browse(
+            cr, uid, [int(group_id)], context=context).display_name
 
-		#prepares fields of new lead
-		post = {
-			'description' : "",
-			'email_from' : lead_email,
-			'name' : categ_name + " for " + lead_name,
-			'contact_name' : lead_name,
-			'categ_ids' : [(6, 0, [group_id])],
-			'is_eval': True,
-		}
+        # prepares fields of new lead
+        post = {
+            'description': "",
+            'email_from': lead_email,
+            'name': categ_name + " for " + lead_name,
+            'contact_name': lead_name,
+            'categ_ids': [(6, 0, [group_id])],
+            'is_eval': True,
+        }
+        if lead_company:
+            post['partner_name'] = lead_company
+        if lead_tel:
+            post['phone'] = lead_tel
 
-		#prepares description of new lead
-		environ = request.httprequest.headers.environ
-		post['description'] = "%s\n-----------------------------\nIP: %s\nUSER_AGENT: %s\nACCEPT_LANGUAGE: %s\nREFERER: %s" % (
-			post['description'],
-			environ.get("REMOTE_ADDR"),
-			environ.get("HTTP_USER_AGENT"),
-			environ.get("HTTP_ACCEPT_LANGUAGE"),
-			environ.get("HTTP_REFERER"))
+        # prepares description of new lead
+        environ = request.httprequest.headers.environ
+        post['description'] = "%s\n-----------------------------\nIP: %s\nUSER_AGENT: %s\nACCEPT_LANGUAGE: %s\nREFERER: %s" % (
+            post['description'],
+            environ.get("REMOTE_ADDR"),
+            environ.get("HTTP_USER_AGENT"),
+            environ.get("HTTP_ACCEPT_LANGUAGE"),
+            environ.get("HTTP_REFERER"))
 
-		lead_new = request.registry['crm.lead'].create(request.cr, SUPERUSER_ID, post, request.context)
-		#returns lead id
-		return lead_new
-		
+        lead_new = request.registry['crm.lead'].create(
+            request.cr, SUPERUSER_ID, post, request.context)
+        # returns lead id
+        return lead_new

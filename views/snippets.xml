@@ -31,5 +31,39 @@
 			</div>
 	</xpath>
 </template>
+
+<template id="contact_eval_snippet_ex" inherit_id="website.snippets" name="E-Mail Subscribe Extended">
+	<xpath expr="//div[@id='snippet_content']" position="inside">
+			
+			<div>
+				<div class="oe_snippet_thumbnail">
+					<img class="oe_snippet_thumbnail_img" src="/website/static/src/img/blocks/block_text_block.png"/>
+					<span class="oe_snippet_thumbnail_title">Contact Eval Ex.</span>
+				</div>
+				<section class="oe_snippet_body js_contact_eval_ex">
+					<div class="form-inline js_contact_eval_form_ex">
+							<input name="lead_name" type="text" required="True" placeholder="your name" class="form-control js_lead_name_ex"></input>
+							<input name="lead_email" type="email" required="True" placeholder="your email" class="form-control js_lead_email_ex"></input>
+							<input name="lead_company" type="text" required="True" placeholder="your company" class="form-control js_lead_company_ex"></input>
+							<input name="lead_tel" type="text" required="True" placeholder="your tel. number" class="form-control js_lead_tel_ex"></input>
+							<button class="btn js_contact_eval_btn_ex">Confirm</button>
+					</div>
+					<p class="js_mg_details_ex hidden well well-sm">
+                    	Thank you! We will process your request soon!
+                	</p>
+				</section>
+			</div>
+	</xpath>
+	<xpath expr="//div[@id='snippet_options']" position="inside">
+		<div data-snippet-option-id='contact_eval_snippet_ex'
+				data-selector=".js_contact_eval_ex"
+				data-selector-siblings="p, h1, h2, h3, blockquote, .well, .panel">
+				<li>
+					<a href="#" class="button js_contact_eval_group_ex">Group</a>
+				</li>
+			</div>
+	</xpath>
+</template>
+
 </data>
 </openerp>
