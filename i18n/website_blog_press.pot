@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* website_blog_press
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-13 11:38+0000\n"
+"PO-Revision-Date: 2015-03-13 11:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_blog_press
+#: view:website:website_blog.blog_post_complete
+msgid "Back"
+msgstr ""
+
+#. module: website_blog_press
+#: model:ir.model,name:website_blog_press.model_blog_post
+msgid "Blog Post"
+msgstr ""
+
+#. module: website_blog_press
+#: view:blog.post:website_blog_press.website_blog_view_blog_post_form
+msgid "Blog Post Content"
+msgstr ""
+
+#. module: website_blog_press
+#: model:ir.model,name:website_blog_press.model_blog_blog
+msgid "Blogs"
+msgstr ""
+
+#. module: website_blog_press
+#: field:blog.post,post_description:0
+msgid "Description"
+msgstr ""
+
+#. module: website_blog_press
+#: field:blog.post,foreign_url:0
+msgid "Foreign URL"
+msgstr ""
+
+#. module: website_blog_press
+#: field:blog.blog,link_foreign:0
+msgid "Link to foreign URL"
+msgstr ""
+
+#. module: website_blog_press
+#: field:blog.post,read_on_text:0
+msgid "Read On Text"
+msgstr ""
+
+#. module: website_blog_press
+#: view:blog.post:website_blog_press.website_blog_view_blog_post_form
+msgid "Short introduction"
+msgstr ""
+
+#. module: website_blog_press
+#: view:blog.post:website_blog_press.website_blog_view_blog_post_form
+msgid "Technical"
+msgstr ""
+
+#. module: website_blog_press
+#: code:addons/website_blog_press/modify_blog.py:21
+#, python-format
+msgid "Read on"
+msgstr ""
+
+#. module: website_blog_press
+#: view:website:website_blog.blog_post_short
+msgid "comment"
+msgstr ""
+
+#. module: website_blog_press
+#: view:website:website_blog.blog_post_short
+msgid "comments"
+msgstr ""
+
+#. module: website_blog_press
+#: view:blog.post:website_blog_press.website_blog_view_blog_post_form
+msgid "https://www.openbig.org/"
+msgstr ""
+
+#. module: website_blog_press
+#: view:website:website_blog.blog_post_short
+msgid "not published"
+msgstr ""
+
