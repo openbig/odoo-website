@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+	<!-- Adds new fields to backend view of blog post -->
+	<record id="website_blog_view_blog_post_form" model="ir.ui.view">
+		<field name="model">blog.post</field>
+		<field name="inherit_id" ref="website_blog.view_blog_post_form"/>
+		<field name="arch" type="xml">
+		<field name="visits" position="after">
+			<field name="author_id"/>
+			<field name="read_on_text"/>
+			<field name="foreign_url" String="Foreign URL" placeholder="https://www.openbig.org/"/>
+		</field>
+		<group string="Technical" position="after">
+			<notebook>
+				<page string="Short introduction">
+					<field name="post_description" />
+				</page>
+				<page string="Blog Post Content">
+					<field name="content"/>
+				</page>
+			</notebook>
+				
+		</group>
+		</field>
+	</record>
+	<record id="website_blog_view_blog_blog_form" model="ir.ui.view">
+		<field name="model">blog.blog</field>
+		<field name="inherit_id" ref="website_blog.view_blog_blog_form"/>
+		<field name="arch" type="xml">
+		<field name="description" position="after">
+			<field name="link_foreign" />
+		</field>
+		</field>
+	</record>
+</data>
+</openerp>
+
