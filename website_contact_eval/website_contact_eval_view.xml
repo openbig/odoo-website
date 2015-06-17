@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="website_contact_eval_lead_search_view" model="ir.ui.view">
+		<field name="model">crm.lead</field>
+		<field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+		<field name="arch" type="xml">
+			<filter name="not_opt_out" position="after">
+				<filter string="Evaluation" name="evaluation" domain="[('is_eval','=',True)]"/>
+			</filter>
+		</field>
+</record>
+<record model="ir.actions.act_window" id="crm_case_category_act_eval_requests">
+        <field name="name">EVAL Requests</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_eval','=',True),'|', ('type','=','lead'), ('type','=',False)]</field>
+        <field name="view_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="search_view_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="context">{
+                'default_type':'lead',
+                'stage_type':'lead',
+                'empty_list_help_model': 'crm.case.section',
+                'needaction_menu_ref': 'crm.menu_crm_opportunities',
+            }
+        </field>
+        <field name="help" type="html">
+            <p>
+                Use leads if you need a qualification step before creating an
+                opportunity or a customer. It can be a business card you received,
+                a contact form filled in your website, or a file of unqualified
+                prospects you import, etc.
+            </p><p>
+                Once qualified, the lead can be converted into a business
+                opportunity and/or a new customer in your address book.
+            </p>
+        </field>
+</record>
+<menuitem name="EVAL Requests" id="menu_eval_requests" parent="base.menu_sales" sequence="3"
+            action="crm_case_category_act_eval_requests"/>
+</data>
+</openerp>
